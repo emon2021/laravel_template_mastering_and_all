@@ -27,7 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('layouts.app');
+    }
+    public function profile()
+    {
+        return view('profile');
     }
 
     // Email Verification
@@ -67,7 +71,7 @@ class HomeController extends Controller
         if(Hash::check($request->current_pass, $user->password))
         {
             $data = array(
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
             );
             DB::table('users')->where('id',Auth::id())->update($data);
             return redirect()->route('home')->with('success','Password Changed Successfully!');

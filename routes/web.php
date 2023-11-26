@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(['auth','verified']);
+Route::get('/profile', [HomeController::class, 'profile'])->name('home')->middleware(['auth','verified']);
 
 //Email verificaiton
 Route::get('/email/verify',[HomeController::class,'verify_notice'])->middleware('auth')->name('verification.notice');
