@@ -27,12 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('layouts.app');
+        return view('home');
     }
-    public function profile()
-    {
-        return view('profile');
-    }
+   
 
     // Email Verification
     public function verify_notice() 
@@ -74,7 +71,8 @@ class HomeController extends Controller
                 'password' => Hash::make($request->password),
             );
             DB::table('users')->where('id',Auth::id())->update($data);
-            return redirect()->route('home')->with('success','Password Changed Successfully!');
+            Auth::logout();
+            return redirect()->route('home');
         }
         return redirect()->back()->with('error','Current Password Mismatched!');
     }
