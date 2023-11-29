@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -29,5 +30,13 @@ Route::get('/email/verify/{id}/{hash}', [HomeController::class,'verify'])->middl
 Route::post('/email/verification-notification', [HomeController::class,'verify_resend'])->middleware(['auth'])->name('verification.resend');
 
 //Changing Password
-Route::get('/change/password',[HomeController::class,'cng_pass_view'])->middleware(['auth','verified'])->name('change.password');
-Route::post('/update/password',[HomeController::class,'update_password'])->middleware(['auth','verified'])->name('update.password');
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/change/password',[HomeController::class,'cng_pass_view'])->name('change.password');
+    Route::post('/update/password',[HomeController::class,'update_password'])->name('update.password');
+});
+
+//categories
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/categories/show',[CategoryController::class,'index'])->name('categories.index');
+
+});
