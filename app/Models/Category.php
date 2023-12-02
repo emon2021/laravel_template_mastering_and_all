@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    // Specify the primary key
+    protected $primaryKey = 'category_id';
+    //fillable all column
     protected $fillable = [
-        'category_id',
         'category_name',
         'category_slug',
     ];

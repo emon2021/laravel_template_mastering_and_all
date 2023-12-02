@@ -38,5 +38,7 @@ Route::middleware(['auth','verified'])->group(function(){
 //categories
 Route::middleware(['auth','verified'])->group(function(){
     Route::get('/categories/show',[CategoryController::class,'index'])->name('categories.index');
-
+    Route::get('/categories/create',[CategoryController::class,'create'])->name('categories.create');
+    Route::post('/categories/added',[CategoryController::class,'store'])->name('categories.store');
+    Route::post('/categories/destroy',[CategoryController::class,'destroy'])->name('categories.destroy');
 });

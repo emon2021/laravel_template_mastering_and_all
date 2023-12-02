@@ -44,8 +44,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item active">
-            <a href="{{route('categories.index')}}" class="nav-link">
+          <li class="nav-item toggle_class active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                  Categories
@@ -53,8 +53,16 @@
                 
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" style="margin-left: 40px">
+                <a href="{{route('categories.create')}}" class="nav-link ms-5"> Add Category</a>
+              </li>
+              <li class="nav-item" style="margin-left: 40px">
+                <a href="{{route('categories.index')}}" class="nav-link ms-5"> All Category</a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item toggle_class">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -66,47 +74,9 @@
               
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Forms
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                Tables
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-          </li>
-          
-          <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
-              <p>
-                Gallery
-              </p>
-            </a>
-          </li>
           
           <li class="nav-header">LABELS</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-danger"></i>
-              <p class="text">Important</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Warning</p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="{{route('change.password',Auth::id())}}" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
