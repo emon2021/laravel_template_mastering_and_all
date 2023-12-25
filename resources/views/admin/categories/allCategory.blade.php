@@ -13,6 +13,9 @@
                     @if(session()->has('delete_success'))
                       <div class="alert alert-success">{{session()->get('delete_success')}}</div>
                     @endif
+                    @if(session()->has('updated'))
+                      <div class="alert alert-success">{{session()->get('updated')}}</div>
+                    @endif
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                       <tr>
@@ -29,7 +32,7 @@
                                 <td>{{$info->category_name}}</td>
                                 <td>{{$info->category_slug}}</td>
                                 <td>
-                                  <a href="#" class="btn btn-primary " style="float:left">Edit</a>
+                                  <a href="{{route('categories.edit',$info->category_id)}}" class="btn btn-primary " style="float:left">Edit</a>
                                   <form action="{{route('categories.destroy')}}" method="post" >
                                     @csrf
                                     <input type="hidden" name="cat_id" value="{{$info->category_id}}">
