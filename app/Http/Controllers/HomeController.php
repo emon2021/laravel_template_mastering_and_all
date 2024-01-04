@@ -31,7 +31,8 @@ class HomeController extends Controller
     }
    
 
-    // Email Verification
+    // Email Verification all
+    //__email verification notice__//
     public function verify_notice() 
     {
         $auth = Auth::user()->email_verified_at;
@@ -41,19 +42,22 @@ class HomeController extends Controller
         }
         return view('auth.verify');
     }
+    //__if verify ? redirect to home__//
     public function verify(EmailVerificationRequest $request) 
     {
         $request->fulfill();
      
         return redirect('/home');
     }
+    //__email verify link resend__//
     public function verify_resend(Request $request) 
     {
         $request->user()->sendEmailVerificationNotification();
      
         return back()->with('message', 'Verification link sent!');
     }
-    // Changing Password
+
+    //__Changing Password all__//
     public function cng_pass_view()
     {
         return view('auth.changePass');
