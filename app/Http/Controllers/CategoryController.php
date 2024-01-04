@@ -29,7 +29,12 @@ class CategoryController extends Controller
         $model->category_name = $request->category_name;
         $model->category_slug = Str::of($request->category_name)->slug('-');
         $model->save();
-        return redirect()->back()->with('success','Category added successfully!');
+        //toaster alert notification
+        $notification = array(
+            'message' => 'Category Added Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 /// category delete
     public function destroy(Request $request)
