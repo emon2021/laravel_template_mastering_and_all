@@ -41,7 +41,12 @@ class CategoryController extends Controller
     {
         $id = $request->cat_id;
         Category::where('category_id',$id)->delete();
-        return redirect()->back()->with('delete_success','Category Deleted successfully!');
+        //toaster alert notification
+        $notification = array(
+            'message' => 'Category Deleted Successfully!',
+            'alert-type' => 'warning'
+        );
+        return redirect()->back()->with($notification);
     }
     //category edit
     public function edit($id)
@@ -60,7 +65,13 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->category_slug = Str::of($request->category_name)->slug('-');
         $category->save();
-        return redirect()->route('categories.index')->with('updated','Category updated successfully!');
+        //toaster alert notification
+        $notification = array(
+            'message' => 'Category Updated Successfully!',
+            'alert-type' => 'success'
+        );
+        
+        return redirect()->route('categories.index')->with($notification);
 
     }
 }
