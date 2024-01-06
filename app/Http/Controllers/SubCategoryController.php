@@ -43,4 +43,12 @@ class SubCategoryController extends Controller
         $data['cat_info'] = SubCategory::all();
         return view('admin.subCategory.index',$data);
     }
+
+    //edit subCategory
+    public function edit($id)
+    {
+        $data['category'] = Category::all();
+        $data['sub_cat'] = SubCategory::select('id','subcategory_name','cat_id')->where('id',$id)->get();
+        return view('admin.subCategory.edit',$data);
+    }
 }

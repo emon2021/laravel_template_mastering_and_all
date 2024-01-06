@@ -51,4 +51,5 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/subCategories/create',[SubCategoryController::class,'create'])->name('subCategories.create');
     Route::post('/subCategories/store',[SubCategoryController::class,'store'])->name('subCategories.store');
     Route::get('/subCategories/index',[SubCategoryController::class,'index'])->name('subCategories.index');
+    Route::get('/subCategories/edit/{id}',[SubCategoryController::class,'edit'])->name('subCategories.edit');
 });

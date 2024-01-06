@@ -34,7 +34,7 @@
                                 <td>{{$info->subcategory_name}}</td>
                                 <td>{{$info->subcategory_slug}}</td>
                                 <td>
-                                  <a href="" class="btn btn-primary " style="float:left">Edit</a>
+                                  <a href="{{route('subCategories.edit',$info->id)}}" class="btn btn-primary " style="float:left">Edit</a>
                                   <form action="" method="post" >
                                     @csrf
                                     <input type="hidden" name="cat_id" value="">
