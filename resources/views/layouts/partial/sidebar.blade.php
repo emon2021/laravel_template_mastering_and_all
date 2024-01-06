@@ -54,11 +54,29 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item" style="margin-left: 40px">
+              <li class="nav-item nav_collapse" style="margin-left: 40px">
                 <a href="{{route('categories.create')}}" class="nav-link ms-5"> Add Category</a>
               </li>
-              <li class="nav-item" style="margin-left: 40px">
+              <li class="nav-item nav_collapse" style="margin-left: 40px">
                 <a href="{{route('categories.index')}}" class="nav-link ms-5"> All Category</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item toggle_class active">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                 Sub Categories
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item nav_collapse" style="margin-left: 40px">
+                <a href="{{route('subCategories.create')}}" class="nav-link ms-5"> Add Sub Category</a>
+              </li>
+              <li class="nav-item nav_collapse" style="margin-left: 40px">
+                <a href="{{route('subCategories.index')}}" class="nav-link ms-5"> All Sub Category</a>
               </li>
             </ul>
           </li>

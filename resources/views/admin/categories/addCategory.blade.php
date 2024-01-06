@@ -24,9 +24,6 @@
                               @enderror
                             </div>
                           </div>
-                          @if(session()->has('success'))
-                            <div class="alert alert-success">{{session()->get('success')}}</div>
-                          @endif
                           <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Add</button>
                           </div>

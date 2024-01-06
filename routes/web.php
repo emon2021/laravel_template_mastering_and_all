@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,11 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::post('/categories/destroy',[CategoryController::class,'destroy'])->name('categories.destroy');
     Route::get('/categories/edit/{id}',[CategoryController::class,'edit'])->name('categories.edit');
     Route::post('/categories/update/{id}',[CategoryController::class,'update'])->name('categories.update');
+});
+
+//subCategories
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/subCategories/create',[SubCategoryController::class,'create'])->name('subCategories.create');
+    Route::post('/subCategories/store',[SubCategoryController::class,'store'])->name('subCategories.store');
+    Route::get('/subCategories/index',[SubCategoryController::class,'index'])->name('subCategories.index');
 });
