@@ -20,6 +20,7 @@
                       <thead>
                       <tr>
                         <th>S.L</th>
+                        <th>Category Name</th>
                         <th>Sub Category Name</th>
                         <th>Sub Category Slug</th>
                         <th>Action</th>
@@ -29,6 +30,7 @@
                         @foreach($cat_info as $key => $info)
                             <tr>
                                 <td>{{++$key}}</td>
+                                <td>{{$info->category->category_name}}</td>
                                 <td>{{$info->subcategory_name}}</td>
                                 <td>{{$info->subcategory_slug}}</td>
                                 <td>

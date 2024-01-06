@@ -15,7 +15,7 @@ class SubCategory extends Model
         'subcategory_slug',
     ];
     //one to one relation with categories table
-    public function sub_categories()
+    public function category()
     {
         return $this->belongsTo(Category::class,'cat_id','category_id');
     }
