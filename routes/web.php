@@ -53,4 +53,5 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/subCategories/index',[SubCategoryController::class,'index'])->name('subCategories.index');
     Route::get('/subCategories/edit/{id}',[SubCategoryController::class,'edit'])->name('subCategories.edit');
     Route::post('/subCategories/update/{id}',[SubCategoryController::class,'update'])->name('subCategories.update');
+    Route::post('/subCategories/destroy',[SubCategoryController::class,'destroy'])->name('subCategories.destroy');
 });

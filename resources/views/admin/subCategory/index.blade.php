@@ -35,9 +35,9 @@
                                 <td>{{$info->subcategory_slug}}</td>
                                 <td>
                                   <a href="{{route('subCategories.edit',$info->id)}}" class="btn btn-primary " style="float:left">Edit</a>
-                                  <form action="" method="post" >
+                                  <form action="{{route('subCategories.destroy')}}" method="post" >
                                     @csrf
-                                    <input type="hidden" name="cat_id" value="">
+                                    <input type="hidden" name="sub_id" value="{{$info->id}}">
                                     <input type="submit" value="Delete" class="btn btn-danger">
                                   </form>
                                 </td>
