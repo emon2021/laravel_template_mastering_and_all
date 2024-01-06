@@ -44,7 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     //__accessor__//
-    public function getNameEmailAttribute()
+    public function getNameEmailAttribute() //'getAttribute' for Accessors
     {
         return $this->name."_".$this->email; // call this 'name_email' or 'nameemail'
     }

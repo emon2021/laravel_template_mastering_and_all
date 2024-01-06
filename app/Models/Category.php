@@ -15,4 +15,10 @@ class Category extends Model
         'category_name',
         'category_slug',
     ];
+
+    //__mutetors__//__mutetor changed the column behabior in database__//
+    public function setCategoryNameAttribute($value) // setAtrribute with column name in camelCase
+    {
+        return $this->attributes['category_name'] = ucfirst($value); //mutetor use attributes['column name']
+    }
 }
