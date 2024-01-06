@@ -51,4 +51,22 @@ class SubCategoryController extends Controller
         $data['sub_cat'] = SubCategory::select('id','subcategory_name','cat_id')->where('id',$id)->get();
         return view('admin.subCategory.edit',$data);
     }
+    //subCategory update
+    public function update(Request $request,$id)
+    {
+        $request -> validate([
+            'subcategory_name' => 'required|string|max:255',
+        ]);
+        $sub_cat = SubCategory::find($id);
+        $sub_cat -> subcategory_name = $request -> subcategory_name;
+        $sub_cat -> subcategory_slug = Str::of($request -> subcategory_name)->slug('-');
+        $sub_cat->update();
+         //toaster alert notification
+         $notification = array(
+            'message' => 'Category Updated Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('subCategories.index')->with($notification);
+
+    }
 }

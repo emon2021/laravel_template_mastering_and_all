@@ -12,7 +12,7 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                       @foreach($sub_cat as $data)
-                        <form action="" method="post"> 
+                        <form action="{{route('subCategories.update',$data->id)}}" method="post"> 
                             @csrf
                           <div class="card-body">
                             <div class="form-group">
