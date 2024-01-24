@@ -11,7 +11,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form>
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Select Category</label>
@@ -34,12 +34,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"
                                         placeholder="Enter Post Title">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea id="summernote">
+                                    <textarea name="description" id="summernote">
                                        
                                     </textarea>
                                 </div>
@@ -47,7 +47,7 @@
                                     <label for="exampleInputFile">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
+                                            <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                         <div class="input-group-append">
@@ -57,10 +57,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="post_date">Post Date</label>
-                                    <input type="text" class="form-control" id="datepicker" name="post_date" id="">
+                                    <input type="text"  class="form-control" id="datepicker" name="post_date" id="">
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <input type="checkbox" name="publish" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Published</label>
                                 </div>
                             </div>

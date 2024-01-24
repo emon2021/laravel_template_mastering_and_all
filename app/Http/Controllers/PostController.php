@@ -21,7 +21,7 @@ class PostController extends Controller
     public function create()
     {
        $data['category'] = Category::all();
-       $data['sub_cat'] = SubCategory::all();
+       //$data['sub_cat'] = SubCategory::all();
         return view('admin/post/create',$data);
     }
 }
