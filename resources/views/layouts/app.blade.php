@@ -33,7 +33,8 @@
   <link rel="stylesheet" href="{{url('dist/css/adminlte.min.css')}}">
   <!----toaster alert css---->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
+  <!--------jquery ui.css------->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -106,6 +107,8 @@
 <script src="{{url('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{url('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{url('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<!-- Summernote -->
+<script src="{{url('/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{url('dist/js/adminlte.min.js')}}"></script>
 <!-----toaster alert js---->
@@ -167,12 +170,23 @@
         }
     @endif
 </script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   {{-- //custom --}}
   <script>
       $(document).ready(function(){
         $('.toggle_class').click(function(){
           $(this).toggleClass('menu-is-opening menu-open');
         });
+        //datepicker
+      $(function() {
+        $( "#datepicker" ).datepicker();
+      } );
+      });
+  </script>
+  <script>
+    $(function () {
+      // Summernote
+      $('#summernote').summernote()
       });
   </script>
 </body>

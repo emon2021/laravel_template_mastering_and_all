@@ -17,11 +17,11 @@ class PostController extends Controller
         return view('admin/post/index',compact('post'));
     }
 
-
-
     //__create__//
     public function create()
     {
-        return view('admin/post/create');
+       $data['category'] = Category::all();
+       $data['sub_cat'] = SubCategory::all();
+        return view('admin/post/create',$data);
     }
 }
