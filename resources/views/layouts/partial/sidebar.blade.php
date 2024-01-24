@@ -55,10 +55,10 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item nav_collapse" style="margin-left: 40px">
-                <a href="{{route('categories.create')}}" class="nav-link ms-5"> Add Category</a>
+                <a href="{{route('categories.index')}}" class="nav-link ms-5"> All Category</a>
               </li>
               <li class="nav-item nav_collapse" style="margin-left: 40px">
-                <a href="{{route('categories.index')}}" class="nav-link ms-5"> All Category</a>
+                <a href="{{route('categories.create')}}" class="nav-link ms-5"> Add Category</a>
               </li>
             </ul>
           </li>
@@ -72,11 +72,11 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item nav_collapse toggle_class" style="margin-left: 40px">
-                <a href="{{route('subCategories.create')}}" class="nav-link ms-5"> Add Sub Category</a>
-              </li>
               <li class="nav-item nav_collapse" style="margin-left: 40px">
                 <a href="{{route('subCategories.index')}}" class="nav-link ms-5"> All Sub Category</a>
+              </li>
+              <li class="nav-item nav_collapse toggle_class" style="margin-left: 40px">
+                <a href="{{route('subCategories.create')}}" class="nav-link ms-5"> Add Sub Category</a>
               </li>
             </ul>
           </li>
@@ -89,11 +89,11 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item nav_collapse toggle_class" style="margin-left: 40px">
-                <a href="{{route('post.create')}}" class="nav-link ms-5"> Add Post</a>
-              </li>
               <li class="nav-item nav_collapse" style="margin-left: 40px">
                 <a href="{{route('post.index')}}" class="nav-link ms-5"> All Post</a>
+              </li>
+              <li class="nav-item nav_collapse toggle_class" style="margin-left: 40px">
+                <a href="{{route('post.create')}}" class="nav-link ms-5"> Add Post</a>
               </li>
             </ul>
           </li>

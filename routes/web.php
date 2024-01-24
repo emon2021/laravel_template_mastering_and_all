@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SubCategoryController;
 
 /*
@@ -54,4 +55,13 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/subCategories/edit/{id}',[SubCategoryController::class,'edit'])->name('subCategories.edit');
     Route::post('/subCategories/update/{id}',[SubCategoryController::class,'update'])->name('subCategories.update');
     Route::post('/subCategories/destroy',[SubCategoryController::class,'destroy'])->name('subCategories.destroy');
+});
+
+//__Post__//
+Route::middleware(['auth','verified'])->prefix('/post')->group(function(){
+    Route::get('/post-all/index',[PostController::class,'index'])->name('post.index');
+
+
+
+    Route::get('/post-all/create',[PostController::class,'create'])->name('post.create');
 });
