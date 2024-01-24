@@ -72,7 +72,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item nav_collapse" style="margin-left: 40px">
+              <li class="nav-item nav_collapse toggle_class" style="margin-left: 40px">
                 <a href="{{route('subCategories.create')}}" class="nav-link ms-5"> Add Sub Category</a>
               </li>
               <li class="nav-item nav_collapse" style="margin-left: 40px">
