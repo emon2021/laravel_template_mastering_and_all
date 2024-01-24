@@ -84,12 +84,17 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Charts
+                Posts
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
+              <li class="nav-item nav_collapse toggle_class" style="margin-left: 40px">
+                <a href="{{route('post.create')}}" class="nav-link ms-5"> Add Post</a>
+              </li>
+              <li class="nav-item nav_collapse" style="margin-left: 40px">
+                <a href="{{route('post.index')}}" class="nav-link ms-5"> All Post</a>
+              </li>
             </ul>
           </li>
           
