@@ -60,8 +60,6 @@ Route::middleware(['auth','verified'])->group(function(){
 //__Post__//
 Route::middleware(['auth','verified'])->prefix('/post')->group(function(){
     Route::get('/post-all/index',[PostController::class,'index'])->name('post.index');
-
-
-
     Route::get('/post-all/create',[PostController::class,'create'])->name('post.create');
+    Route::post('/post-all/store',[PostController::class,'store'])->name('post.store');
 });

@@ -11,7 +11,8 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" enctype="multipart/form-data">
+                        <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Select Category</label>
@@ -59,9 +60,13 @@
                                     <label for="post_date">Post Date</label>
                                     <input type="text"  class="form-control" id="datepicker" name="post_date" id="">
                                 </div>
+                                <div class="form-group">
+                                    <label for="post_date">Tags</label>
+                                    <input type="text"  class="form-control" id="datepicker" name="tags" id="">
+                                </div>
                                 <div class="form-check">
-                                    <input type="checkbox" name="publish" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Published</label>
+                                    <input type="checkbox" value="1" name="status" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Publish</label>
                                 </div>
                             </div>
                             <!-- /.card-body -->
