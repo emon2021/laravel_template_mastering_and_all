@@ -44,7 +44,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item toggle_class active">
+          <li class="nav-item toggle_class @if(Request::url() == 'http://127.0.0.1:8000/categories/create' || Request::url() == 'http://127.0.0.1:8000/categories/show') menu-is-openning menu-open @endif">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -62,7 +62,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item toggle_class active">
+          <li class="nav-item toggle_class active @if(Request::url() == 'http://127.0.0.1:8000/subCategories/index' || Request::url() == 'http://127.0.0.1:8000/subCategories/create') menu-is-openning menu-open @endif">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -80,7 +80,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item toggle_class">
+          <li class="nav-item toggle_class @if(Request::url() == 'http://127.0.0.1:8000/post/post-all/index' || Request::url() == 'http://127.0.0.1:8000/post/post-all/create') menu-is-openning menu-open @endif">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
