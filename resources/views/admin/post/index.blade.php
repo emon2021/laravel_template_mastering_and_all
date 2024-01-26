@@ -27,6 +27,7 @@
                         <th>Description</th>
                         <th>Slug</th>
                         <th>Post Date</th>
+                        <th>Image</th>
                         <th>Action</th>
                       </tr>
                       </thead>
@@ -42,10 +43,13 @@
                                 <td>{{$info->slug}}</td>
                                 <td>{{$info->post_date}}</td>
                                 <td>
+                                  <img width="100" src="{{url($info->image)}}" alt="">
+                                </td>
+                                <td>
                                   <a href="#" class="btn btn-primary " style="float:left">Edit</a>
-                                  <form action="#" method="post" >
+                                  <form action="{{route('post.destroy')}}" method="post" >
                                     @csrf
-                                    <input type="hidden" name="sub_id" value="">
+                                    <input type="hidden" name="post_id" value="{{$info->post_id}}">
                                     <input type="submit" value="Delete" class="btn btn-danger">
                                   </form>
                                 </td>

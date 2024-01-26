@@ -9,13 +9,15 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
     //__index__//
     public function index()
     {
-        $post = Post::all();
+        $post = Post::Select('id as post_id','cat_id','subCat_id','image','user_id','title','description','slug','post_date','tags')->get();
+        
         return view('admin/post/index',compact('post'));
     }
 
@@ -60,7 +62,7 @@ class PostController extends Controller
             $image = $image->resize(600,400);
             $image->toJpeg(100)->save(base_path("public/media/$picName"));
 
-            $post->image = "public/media/$picName";
+            $post->image = "media/$picName";
             $post->save();
         }
         //__without image save__//
@@ -69,6 +71,29 @@ class PostController extends Controller
         $notification = array(
             'message' => 'Posted Successfully!',
             'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    //__destroy__//
+    public function destroy(Request $request)
+    {
+
+        $post = Post::find($request->post_id);
+        if(File::exists($post->image)){
+            $dlt = File::delete(base_path('public/'.$post->image));
+            if($dlt == true)
+            {
+                $post->delete();
+            }
+        }else{
+            $post->delete();
+        }
+        
+        //toaster alert notification
+        $notification = array(
+            'message' => 'Post Deleted Successfully!',
+            'alert-type' => 'warning'
         );
         return redirect()->back()->with($notification);
     }
