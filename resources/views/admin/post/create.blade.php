@@ -16,7 +16,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="title">Select Category</label>
-                                    <select class="form-control" name="category" id="">
+                                    <select class="form-control @error('category') is-invalid @enderror" name="category" id="">
                                         <option>Select Category</option>
                                         @foreach ($category as $info)
                                             <option value="{{$info->category_id}}">
@@ -32,41 +32,59 @@
                                         @endforeach
                                         
                                     </select>
+                                    @error('category')
+                                    <font color='#DC3545'>{{$message}}</font>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1"
                                         placeholder="Enter Post Title">
+                                    @error('title')
+                                        <font color='#DC3545'>{{$message}}</font>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea name="description" id="summernote">
+                                    <textarea name="description" @error('description') is-invalid @enderror id="summernote">
                                        
                                     </textarea>
+                                    @error('description')
+                                    <font color='#DC3545'>{{$message}}</font>
+                                @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                                            <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="exampleInputFile">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
+                                            @error('image')
+                                            <font color='#DC3545'>{{$message}}</font>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="post_date">Post Date</label>
-                                    <input type="text"  class="form-control" id="datepicker" name="post_date" id="">
+                                    <input type="text"  class="form-control @error('post_date') is-invalid @enderror" id="datepicker" name="post_date" id="">
+                                    @error('post_date')
+                                    <font color='#DC3545'>{{$message}}</font>
+                                @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="post_date">Tags</label>
-                                    <input type="text"  class="form-control" id="datepicker" name="tags" id="">
+                                    <input type="text"  class="form-control @error('tags') is-invalid @enderror" id="datepicker" name="tags" id="">
+                                    @error('tags')
+                                    <font color='#DC3545'>{{$message}}</font>
+                                @enderror
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" value="1" name="status" class="form-check-input" id="exampleCheck1">
+                                    <input type="checkbox" value="1" name="status" class="form-check-input @error('status') is-invalid @enderror" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Publish</label>
+                                    @error('status')
+                                    <font color='#DC3545'>{{$message}}</font>
+                                @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->

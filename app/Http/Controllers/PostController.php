@@ -37,7 +37,6 @@ class PostController extends Controller
             'title' => 'required',
             'description' => 'required',
             'post_date' => 'required',
-            'status' => 'required',
             'tags' => 'required',
         ]);
         $subCat = 2;
@@ -81,7 +80,7 @@ class PostController extends Controller
 
         $post = Post::find($request->post_id);
         if(File::exists($post->image)){
-            $dlt = File::delete(base_path('public/'.$post->image));
+            $dlt = File::delete(base_path('public/'.$post->image)); //base_path is for select a path
             if($dlt == true)
             {
                 $post->delete();
