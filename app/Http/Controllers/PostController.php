@@ -96,4 +96,10 @@ class PostController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    //__edit__//
+    public function edit($id)
+    {
+        return view('admin/post/edit');
+    }
 }

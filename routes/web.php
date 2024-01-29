@@ -63,4 +63,5 @@ Route::middleware(['auth','verified'])->prefix('/post')->group(function(){
     Route::get('/insert-post/create',[PostController::class,'create'])->name('post.create');
     Route::post('/post-store/store',[PostController::class,'store'])->name('post.store');
     Route::post('/post-delete/destroy',[PostController::class,'destroy'])->name('post.destroy');
+    Route::post('/post-edit/edit/{id}',[PostController::class,'edit'])->name('post.edit');
 });
