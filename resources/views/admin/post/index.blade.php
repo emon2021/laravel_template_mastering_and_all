@@ -46,7 +46,7 @@
                                   <img width="100" src="{{url($info->image)}}" alt="">
                                 </td>
                                 <td>
-                                  <a href="#" class="btn btn-primary " style="float:left">Edit</a>
+                                  <a href="{{route('post.edit',$info->post_id)}}" class="btn btn-primary " style="float:left">Edit</a>
                                   <form action="{{route('post.destroy')}}" method="post" >
                                     @csrf
                                     <input type="hidden" name="post_id" value="{{$info->post_id}}">

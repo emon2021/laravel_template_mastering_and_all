@@ -57,8 +57,8 @@
                                     <label for="exampleInputFile">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            <input type="file" name="image" class=" form-control @error('image') is-invalid @enderror" id="exampleInputFile">
+                                           
                                             @error('image')
                                             <font color='#DC3545'>{{$message}}</font>
                                             @enderror

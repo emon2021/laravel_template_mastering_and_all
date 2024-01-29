@@ -100,6 +100,8 @@ class PostController extends Controller
     //__edit__//
     public function edit($id)
     {
-        return view('admin/post/edit');
+        $data['category'] = Category::all();
+        $data['posts'] = Post::select('title','description','image','tags','status','cat_id')->where('id',$id)->get();
+        return view('admin/post/edit',$data);
     }
 }
