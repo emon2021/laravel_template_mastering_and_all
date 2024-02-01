@@ -25,9 +25,8 @@
                         <th>User Name</th>
                         <th>Tile</th>
                         <th>Description</th>
-                        <th>Slug</th>
                         <th>Post Date</th>
-                        <th>Image</th>
+                        <th>Status</th>
                         <th>Action</th>
                       </tr>
                       </thead>
@@ -40,10 +39,13 @@
                                 <td>{{$info->user->name}}</td>
                                 <td>{{$info->title}}</td>
                                 <td>{{$info->description}}</td>
-                                <td>{{$info->slug}}</td>
                                 <td>{{$info->post_date}}</td>
                                 <td>
-                                  <img width="100" src="{{url($info->image)}}" alt="">
+                                  @if($info->status===1)
+                                    <span class="badge badge-success">Active</span>
+                                  @elseif($info->status === 0)
+                                    <span class="badge badge-danger">Inactive</span>
+                                  @endif
                                 </td>
                                 <td>
                                   <a href="{{route('post.edit',$info->post_id)}}" class="btn btn-primary " style="float:left">Edit</a>

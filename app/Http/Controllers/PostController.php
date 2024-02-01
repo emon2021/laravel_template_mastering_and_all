@@ -16,7 +16,7 @@ class PostController extends Controller
     //__index__//
     public function index()
     {
-        $post = Post::Select('id as post_id','cat_id','subCat_id','image','user_id','title','description','slug','post_date','tags')->get();
+        $post = Post::Select('id as post_id','cat_id','subCat_id','image','user_id','title','description','status','post_date','tags')->get();
         
         return view('admin/post/index',compact('post'));
     }
@@ -101,7 +101,59 @@ class PostController extends Controller
     public function edit($id)
     {
         $data['category'] = Category::all();
-        $data['posts'] = Post::select('title','description','image','tags','status','cat_id')->where('id',$id)->get();
+        $data['posts'] = Post::select('id','title','description','image','tags','status','cat_id')->where('id',$id)->first();
         return view('admin/post/edit',$data);
+    }
+
+
+    //__update__//
+    public function update(Request $request)
+    {
+        
+        // $validate = $request->validate([
+        //     'category' => 'required',
+        //     'title' => 'required',
+        //     'description' => 'required',
+        //     'post_date' => 'required',
+        //     'tags' => 'required',
+        // ]);
+        
+        $id = $request->hidden_id;
+        $subCat = 2;
+        $post = Post::find($id);
+        $post->cat_id = $request->category;
+        $post->subCat_id = $subCat;
+        $post->user_id = Auth::user()->id;
+        $post->title = $request->title;
+        $slug = Str::of($request->title)->slug('-');
+        $post->slug = $slug;
+        $post->description = $request->description;
+        $post->status = $request->status;
+        $post->tags = $request->tags;
+       
+        $photo = $request->file('old_image');
+        if($photo)
+        {
+            if(File::exists($post->image)){
+                $dlt = File::delete(base_path('public/'.$post->image)); //base_path is for select a path
+            }
+            
+            $imgManger = new ImageManager(new Driver());
+            $picName = md5(sha1($slug.uniqid())).'.'.$photo->getClientOriginalExtension();
+            $image = $imgManger->read($photo);
+            $image = $image->resize(600,400);
+            $image->toJpeg(100)->save(base_path("public/media/$picName"));
+
+            $post->image = "media/$picName";
+            $post->update();
+        }
+        //__without image save__//
+        $post->update();
+        //toaster alert notification
+        $notification = array(
+            'message' => 'Post Updated Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('post.index')->with($notification);
     }
 }

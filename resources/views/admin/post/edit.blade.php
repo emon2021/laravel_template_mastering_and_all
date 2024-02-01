@@ -11,8 +11,8 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        @foreach($posts as $post)
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        
+                        <form action="{{route('post.update')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -20,7 +20,7 @@
                                     <select class="form-control @error('category') is-invalid @enderror" name="category" id="">
                                         <option>Select Category</option>
                                         @foreach ($category as $info)
-                                            <option  value="{{$info->category_id}}" @if($post->cat_id === $info->category_id) selected @endif>
+                                            <option  value="{{$info->category_id}}" @if($posts->cat_id == $info->category_id) selected @endif>
                                                 {{$info->category_name}}
                                             </option>
                                         @endforeach
@@ -30,9 +30,10 @@
                                     <font color='#DC3545'>{{$message}}</font>
                                     @enderror
                                 </div>
+                                <input type="hidden" value="{{$posts->id}}" name="hidden_id">
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" name="title" value="{{$post->title}}" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1"
+                                    <input type="text" name="title" value="{{$posts->title}}" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1"
                                         placeholder="Enter Post Title">
                                     @error('title')
                                         <font color='#DC3545'>{{$message}}</font>
@@ -41,7 +42,7 @@
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <textarea name="description"  @error('description') is-invalid @enderror id="summernote">
-                                        {{$post->description}}
+                                        {{$posts->description}}
                                     </textarea>
                                     @error('description')
                                     <font color='#DC3545'>{{$message}}</font>
@@ -51,7 +52,7 @@
                                     <label for="exampleInputFile">Image</label>
                                     <div class="">
                                         <div class="">
-                                            <input type="file" name="image" value="{{$post->image}}" class=" form-control @error('image') is-invalid @enderror" id="exampleInputFile">
+                                            <input type="file" name="old_image" value="{{$posts->image}}" class=" form-control @error('image') is-invalid @enderror" id="exampleInputFile">
                                            
                                             @error('image')
                                             <font color='#DC3545'>{{$message}}</font>
@@ -61,13 +62,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="tags">Tags</label>
-                                    <input type="text" value="{{$post->tags}}"  class="form-control @error('tags') is-invalid @enderror" name="tags" id="">
+                                    <input type="text" value="{{$posts->tags}}"  class="form-control @error('tags') is-invalid @enderror" name="tags" id="">
                                     @error('tags')
                                     <font color='#DC3545'>{{$message}}</font>
                                 @enderror
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" @if($post->status =='1') checked @endif value="1" name="status" class="form-check-input @error('status') is-invalid @enderror" id="exampleCheck1">
+                                    <input type="checkbox" @if($posts->status =='1') checked @endif value="1" name="status" class="form-check-input @error('status') is-invalid @enderror" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Publish</label>
                                     @error('status')
                                     <font color='#DC3545'>{{$message}}</font>
@@ -80,7 +81,7 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
-                        @endforeach
+                        
                     </div>
                     <!-- /.card -->
                 </div>
