@@ -17,9 +17,11 @@ class PostProcessed
     /**
      * Create a new event instance.
      */
-    public function __construct()
+
+    public $post;
+    public function __construct($post)
     {
-        //
+        $this->post = $post;
     }
 
     /**

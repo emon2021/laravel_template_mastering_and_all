@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostProcessed;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -51,6 +52,12 @@ class PostController extends Controller
         $post->post_date = $request->post_date;
         $post->status = $request->status;
         $post->tags = $request->tags;
+
+        //__event calling__//
+        $data = ['title'=> $request->title,'date'=>date('d M Y')];
+        event(new PostProcessed($data));
+        //__ -/event calling__//
+
 
         $photo = $request->file('image');
         if($photo)
