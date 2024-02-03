@@ -29,7 +29,7 @@ class SendPostNotification
         $users = User::all();
         foreach($users as $user)
         {
-            Mail::to($user()->email)->send(new PostMail($event->post ));
+            Mail::to($user->email)->send(new PostMail($event->post));
         }
         
     }

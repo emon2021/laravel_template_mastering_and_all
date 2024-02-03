@@ -50,11 +50,17 @@ class PostController extends Controller
         $post->slug = $slug;
         $post->description = $request->description;
         $post->post_date = $request->post_date;
-        $post->status = $request->status;
+        if($request->status == null){
+            $post->status = 0;
+        }else{
+            $post->status = $request->status;
+        }
+        
         $post->tags = $request->tags;
 
         //__event calling__//
-        $data = ['title'=> $request->title,'date'=>date('d M Y')];
+        $data['title'] = $request->title;
+        $data['date'] = date('d M Y');
         event(new PostProcessed($data));
         //__ -/event calling__//
 
@@ -135,7 +141,11 @@ class PostController extends Controller
         $slug = Str::of($request->title)->slug('-');
         $post->slug = $slug;
         $post->description = $request->description;
-        $post->status = $request->status;
+        if($request->status == null){
+            $post->status = 0;
+        }else{
+            $post->status = $request->status;
+        }
         $post->tags = $request->tags;
        
         $photo = $request->file('old_image');

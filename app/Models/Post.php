@@ -19,6 +19,8 @@ class Post extends Model
         'image','slug',
         'post_date',
         'tags',
+        'status',
+        'views',
     ];
 
     //__join with categories table__//
