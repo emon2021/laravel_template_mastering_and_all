@@ -31,8 +31,8 @@ Route::post('/admin/super-admin',[LoginController::class])->name('admin');
 
 //Email verificaiton
 Route::get('/email/verify',[HomeController::class,'verify_notice'])->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', [HomeController::class,'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
-Route::post('/email/verification-notification', [HomeController::class,'verify_resend'])->middleware(['auth'])->name('verification.resend');
+Route::get('/email/verify/{id}/{hash}', [HomeController::class,'verify'])->name('verification.verify');
+Route::post('/email/verification-notification', [HomeController::class,'verify_resend'])->name('verification.resend');
 
 //Changing Password
 Route::middleware(['auth','verified'])->group(function(){

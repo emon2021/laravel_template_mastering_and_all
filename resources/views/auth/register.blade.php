@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+
     <div class="hold-transition register-page">
         <div class="register-box">
             <div class="card card-outline card-primary">
@@ -106,4 +105,3 @@
             </div><!-- /.card -->
         </div>
     </div>
-@endsection
