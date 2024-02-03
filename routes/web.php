@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SubCategoryController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +22,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register'=>false]);
+Auth::routes(['register'=>true]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(['auth','verified']);
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(['auth','verified','is_admin']);
+//__user route__//
+Route::get('/not-admin/user',[HomeController::class,'error'])->name('errors.error');
+Route::post('/admin/super-admin',[LoginController::class])->name('admin');
 
 //Email verificaiton
 Route::get('/email/verify',[HomeController::class,'verify_notice'])->middleware('auth')->name('verification.notice');
@@ -38,7 +41,7 @@ Route::middleware(['auth','verified'])->group(function(){
 });
 
 //categories
-Route::middleware(['auth','verified'])->group(function(){
+Route::middleware(['auth','verified','is_admin'])->group(function(){
     Route::get('/categories/show',[CategoryController::class,'index'])->name('categories.index');
     Route::get('/categories/create',[CategoryController::class,'create'])->name('categories.create');
     Route::post('/categories/added',[CategoryController::class,'store'])->name('categories.store');
@@ -48,7 +51,7 @@ Route::middleware(['auth','verified'])->group(function(){
 });
 
 //subCategories
-Route::middleware(['auth','verified'])->group(function(){
+Route::middleware(['auth','verified','is_admin'])->group(function(){
     Route::get('/subCategories/create',[SubCategoryController::class,'create'])->name('subCategories.create');
     Route::post('/subCategories/store',[SubCategoryController::class,'store'])->name('subCategories.store');
     Route::get('/subCategories/index',[SubCategoryController::class,'index'])->name('subCategories.index');
@@ -58,7 +61,7 @@ Route::middleware(['auth','verified'])->group(function(){
 });
 
 //__Post__//
-Route::middleware(['auth','verified'])->prefix('/post')->group(function(){
+Route::middleware(['auth','verified','is_admin'])->prefix('/post')->group(function(){
     Route::get('/post-all/index',[PostController::class,'index'])->name('post.index');
     Route::get('/insert-post/create',[PostController::class,'create'])->name('post.create');
     Route::post('/post-store/store',[PostController::class,'store'])->name('post.store');

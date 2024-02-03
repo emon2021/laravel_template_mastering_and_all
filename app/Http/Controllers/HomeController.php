@@ -80,4 +80,11 @@ class HomeController extends Controller
         }
         return redirect()->back()->with('error','Current Password Mismatched!');
     }
+
+    //__error viewing__//
+    public function error()
+    {
+        Auth::logout();
+        return view('errors.notadmin');
+    }
 }

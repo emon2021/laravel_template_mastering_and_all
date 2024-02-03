@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+
+
     <div class="hold-transition login-page">
         <div class="login-box">
             <!-- /.login-logo -->
@@ -78,4 +78,4 @@
             <!-- /.card -->
         </div>
     </div>
-@endsection
+
