@@ -4,6 +4,17 @@
     </div>
 </div>
 
+<li class="nav-item">
+    <a href="{{route('logout')}}" class="nav-link">
+      <i class="nav-icon far fa-circle text-info"></i>
+      <p>Logout</p>
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+  </li>
+
+
 <script>
     // Redirect after a few seconds
     setTimeout(function() {
